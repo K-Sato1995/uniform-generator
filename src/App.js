@@ -164,35 +164,33 @@ function App () {
           </div>}
 
         <div className={styles.exportImagesContainer}>
+          <h2>画像プレビュー</h2>
+          <div className={styles.imageContainer}>
+            {playerDataList.map((playerData, index) => {
+              return (
+                <CustomeImage
+                  key={index}
+                  file={file}
+                  uniformDesign={uniformDesign}
+                  playerData={playerData}
+                  ref={(element) => {
+                    console.log(element)
+                    refs.current[index] = element
+                  }}
+                />
+              )
+            })}
+          </div>
 
-        <h2>画像プレビュー</h2>
-
-        <div className={styles.imageContainer}>
-          {playerDataList.map((playerData, index) => {
-            return (
-              <CustomeImage
-                key={index}
-                file={file}
-                uniformDesign={uniformDesign}
-                playerData={playerData}
-                ref={(element) => {
-                  console.log(element)
-                  refs.current[index] = element
-                }}
-              />
-            )
-          })}
-        </div>
-
-        <h3 className={styles.subtitle}>作成した画像を取得する</h3>
-          <button onClick={() => {
-            refs.current.map((ref) =>
-              exportComponentAsPNG({ current: ref })
-            )
-          }}>
-            画像達をエクスポートする
-          </button>
-        </div>
+          <h3 className={styles.subtitle}>作成した画像を取得する</h3>
+            <button onClick={() => {
+              refs.current.map((ref) =>
+                exportComponentAsPNG({ current: ref })
+              )
+            }}>
+              画像達をエクスポートする
+            </button>
+         </div>
       </div>
 
   )

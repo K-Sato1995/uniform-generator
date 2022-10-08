@@ -1,8 +1,10 @@
 .container {
-  border: solid 1px;
+  border: solid 1px var(--border-color);
+  margin: 8px;
+  border-radius: 5%;
   position: relative;
   height: 250px;
-  width: 250px;
+  min-width: 250px;
 }
 
 .container__btn {

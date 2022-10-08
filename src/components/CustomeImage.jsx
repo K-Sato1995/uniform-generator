@@ -27,7 +27,7 @@ const CustomeImage = React.forwardRef((props, ref) => {
         fontSize: `${numberDesign.fontSize}px`,
         color: fontColor
       }}>{playerData[PLAYER_NUMBER_INDEX]}</div>
-      <img src={file} alt="player" className={styles.playerImage}/>
+      {file && <img src={file} alt="player" className={styles.playerImage}/>}
     </div>
     </>
   )

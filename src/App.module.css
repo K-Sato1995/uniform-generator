@@ -38,8 +38,9 @@
 }
 .imageContainer {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  max-width: 860px;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .csvUploadContainer {
@@ -89,6 +90,7 @@
 
 .exportImagesContainer {
   text-align: center;
+  margin-bottom: 36px;
 }
 
 .exportImagesContainer > button {  
