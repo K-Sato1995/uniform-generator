@@ -9,6 +9,7 @@
     "csvtojson": "^2.0.8",
     "papaparse": "^5.3.2",
     "react": "^18.2.0",
+    "react-color": "^2.19.3",
     "react-component-export-image": "^1.0.6",
     "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",

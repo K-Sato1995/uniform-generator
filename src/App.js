@@ -3,6 +3,7 @@ import CustomeImage from './components/CustomeImage'
 import CSVDropzone from './components/CsvDropzone'
 import { exportComponentAsPNG } from 'react-component-export-image'
 import styles from './App.module.css'
+import { SketchPicker } from 'react-color'
 
 function App () {
   const [file, setFile] = useState(null)
@@ -14,13 +15,13 @@ function App () {
 
   const [uniformDesign, setUniformDesign] = useState({
     nameDesign: {
-      top: 0,
-      right: 0,
+      top: 70,
+      right: 90,
       fontSize: 16
     },
     numberDesign: {
-      top: 0,
-      right: 0,
+      top: 90,
+      right: 90,
       fontSize: 16
     },
     fontColor: '#000000'
@@ -33,7 +34,6 @@ function App () {
 
   return (
       <div className={styles.App}>
-
         <h2>名前の調整</h2>
         <div className={styles.btnlist}>
             <button className={styles.keyup} onClick={() => {
@@ -120,6 +120,15 @@ function App () {
             setUniformDesign(newState)
           }}/>
 
+          <SketchPicker
+            color={ uniformDesign.fontColor }
+            onChangeComplete={(color) => {
+              setUniformDesign({
+                ...uniformDesign,
+                fontColor: color.hex
+              })
+            }}
+          />
           <CSVDropzone onDrop={setPlayerDataList} />
 
           <button onClick={() => {
