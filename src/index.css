@@ -6,10 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-
   --main-bg-color: #FFF;
   --main-color: #3ea8ff;
+  --secondary-color: #F1F5F9;
   --border-color: #d6e3ed;
+  --secondary-text-color: #6E7B85;
 }
 
 code {

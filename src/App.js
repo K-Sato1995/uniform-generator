@@ -38,144 +38,161 @@ function App () {
           <h1>ユニフォームジェネレータ</h1>
         </div>
 
-        <div className={styles.designContainer}>
-          <h2>名前の調整</h2>
-          <div className={styles.btnlist}>
-              <button className={styles.keyup} onClick={() => {
-                const newState = { ...uniformDesign }
-                newState.nameDesign.top -= 10
-                setUniformDesign(newState)
-              }}>
-                ↑
-              </button>
+        <h2 className={styles.introtitle}>使用手順</h2>
+        <div className={styles.intro}>
+          <ul>
+            <li>(1) まずは選手データを持つCSVをアップロード</li>
+            <li>(2) 次にユニフォームの画像をアップロード</li>
+            <li>(3) ユニフォームの画像の調整</li>
+            <li>(4) 最後に作成した画像達をダウンロード</li>
+          </ul>
+        </div>
+        <div className={styles.csvUploadContainer}>
+            <h3 className={styles.subtitle}>選手データを持つCSVをアップロード</h3>
+            <CSVDropzone onDrop={setPlayerDataList} />
+        </div>
 
-              <button
-                className={styles.keyleft}
-                onClick={() => {
-                  const newState = { ...uniformDesign }
-                  newState.nameDesign.right += 10
-                  setUniformDesign(newState)
-                }}>
-                ←
-              </button>
-              <button className={styles.keydown} onClick={() => {
-                const newState = { ...uniformDesign }
-                newState.nameDesign.top += 10
-                setUniformDesign(newState)
-              }}>
-                ↓
-              </button>
+        <div className={styles.csvUploadContainer}>
+            <h3 className={styles.subtitle}>次にユニフォームの画像をアップロード</h3>
+            <input type="file" className={styles.imageUploader} onChange={handleUploadImage} />
+        </div>
 
-              <button className={styles.keyright}
-                onClick={() => {
-                  const newState = { ...uniformDesign }
-                  newState.nameDesign.right -= 10
-                  setUniformDesign(newState)
-                }}>
-                →
-              </button>
-            </div>
-
-            <input type='number' value={uniformDesign.nameDesign.fontSize} onChange={(e) => {
-              const newState = { ...uniformDesign }
-              newState.nameDesign.fontSize = e.target.value
-              setUniformDesign(newState)
-            }}/>
-
-            <h2>背番号の調整</h2>
-
+       {!!playerDataList.length && <div className={styles.designContainer}>
+          <div className={styles.designSubContainer}>
+            <h3>名前のデザイン調整</h3>
+            <span>名前の位置</span>
             <div className={styles.btnlist}>
-              <button className={styles.keyup} onClick={() => {
-                const newState = { ...uniformDesign }
-                newState.numberDesign.top -= 10
-                setUniformDesign(newState)
-              }}>
-                ↑
-              </button>
-
-              <button
-                className={styles.keyleft}
-                onClick={() => {
+                <button className={styles.keyup} onClick={() => {
                   const newState = { ...uniformDesign }
-                  newState.numberDesign.right += 10
+                  newState.nameDesign.top -= 10
                   setUniformDesign(newState)
                 }}>
-                ←
-              </button>
-              <button className={styles.keydown} onClick={() => {
-                const newState = { ...uniformDesign }
-                newState.numberDesign.top += 10
-                setUniformDesign(newState)
-              }}>
-                ↓
-              </button>
+                  ↑
+                </button>
 
-              <button className={styles.keyright}
-                onClick={() => {
+                <button
+                  className={styles.keyleft}
+                  onClick={() => {
+                    const newState = { ...uniformDesign }
+                    newState.nameDesign.right += 10
+                    setUniformDesign(newState)
+                  }}>
+                  ←
+                </button>
+                <button className={styles.keydown} onClick={() => {
                   const newState = { ...uniformDesign }
-                  newState.numberDesign.right -= 10
+                  newState.nameDesign.top += 10
                   setUniformDesign(newState)
                 }}>
-                →
-              </button>
+                  ↓
+                </button>
+
+                <button className={styles.keyright}
+                  onClick={() => {
+                    const newState = { ...uniformDesign }
+                    newState.nameDesign.right -= 10
+                    setUniformDesign(newState)
+                  }}>
+                  →
+                </button>
+              </div>
+              <span>フォントサイズ(px)</span>
+              <input type='number' value={uniformDesign.nameDesign.fontSize} onChange={(e) => {
+                const newState = { ...uniformDesign }
+                newState.nameDesign.fontSize = e.target.value
+                setUniformDesign(newState)
+              }}/>
             </div>
-            <input type='number' value={uniformDesign.numberDesign.fontSize} onChange={(e) => {
-              const newState = { ...uniformDesign }
-              newState.numberDesign.fontSize = e.target.value
-              setUniformDesign(newState)
-            }}/>
 
-            <SketchPicker
-              color={ uniformDesign.fontColor }
-              onChangeComplete={(color) => {
-                setUniformDesign({
-                  ...uniformDesign,
-                  fontColor: color.hex
-                })
-              }}
-            />
-          </div>
+            <div className={styles.designSubContainer}>
+              <h3>背番号の調整</h3>
 
-          <div className={styles.csvUploadContainer}>
-              <h3>(1) まずは選手データを持つCSVをアップロード</h3>
-             <CSVDropzone onDrop={setPlayerDataList} />
-          </div>
+              <div className={styles.btnlist}>
+                <button className={styles.keyup} onClick={() => {
+                  const newState = { ...uniformDesign }
+                  newState.numberDesign.top -= 10
+                  setUniformDesign(newState)
+                }}>
+                  ↑
+                </button>
 
-          <div className={styles.csvUploadContainer}>
-              <h3>(2) 次にユニフォームの画像をアップロード</h3>
-              <input type="file" className={styles.imageUploader} onChange={handleUploadImage} />
-          </div>
+                <button
+                  className={styles.keyleft}
+                  onClick={() => {
+                    const newState = { ...uniformDesign }
+                    newState.numberDesign.right += 10
+                    setUniformDesign(newState)
+                  }}>
+                  ←
+                </button>
+                <button className={styles.keydown} onClick={() => {
+                  const newState = { ...uniformDesign }
+                  newState.numberDesign.top += 10
+                  setUniformDesign(newState)
+                }}>
+                  ↓
+                </button>
 
-          <div className={styles.exportImagesContainer}>
+                <button className={styles.keyright}
+                  onClick={() => {
+                    const newState = { ...uniformDesign }
+                    newState.numberDesign.right -= 10
+                    setUniformDesign(newState)
+                  }}>
+                  →
+                </button>
+              </div>
+              <span>フォントサイズ(px)</span>
+              <input type='number' value={uniformDesign.numberDesign.fontSize} placeholder="フォントサイズ(px)" onChange={(e) => {
+                const newState = { ...uniformDesign }
+                newState.numberDesign.fontSize = e.target.value
+                setUniformDesign(newState)
+              }}/>
+            </div>
+            <div className={styles.designSubContainer}>
+              <h3>フォントカラー</h3>
+              <SketchPicker
+                color={ uniformDesign.fontColor }
+                onChangeComplete={(color) => {
+                  setUniformDesign({
+                    ...uniformDesign,
+                    fontColor: color.hex
+                  })
+                }}
+              />
+            </div>
+          </div>}
 
-          <h3>作成した画像を取得する</h3>
-            <button onClick={() => {
-              refs.current.map((ref) =>
-                exportComponentAsPNG({ current: ref })
-              )
-            }}>
-              画像達をエクスポートする
-            </button>
-          </div>
+        <div className={styles.exportImagesContainer}>
 
-          <h2>画像プレビュー</h2>
+        <h2>画像プレビュー</h2>
 
-          <div className={styles.imageContainer}>
-            {playerDataList.map((playerData, index) => {
-              return (
-                <CustomeImage
-                  key={index}
-                  file={file}
-                  uniformDesign={uniformDesign}
-                  playerData={playerData}
-                  ref={(element) => {
-                    console.log(element)
-                    refs.current[index] = element
-                  }}
-                />
-              )
-            })}
-          </div>
+        <div className={styles.imageContainer}>
+          {playerDataList.map((playerData, index) => {
+            return (
+              <CustomeImage
+                key={index}
+                file={file}
+                uniformDesign={uniformDesign}
+                playerData={playerData}
+                ref={(element) => {
+                  console.log(element)
+                  refs.current[index] = element
+                }}
+              />
+            )
+          })}
+        </div>
+
+        <h3 className={styles.subtitle}>作成した画像を取得する</h3>
+          <button onClick={() => {
+            refs.current.map((ref) =>
+              exportComponentAsPNG({ current: ref })
+            )
+          }}>
+            画像達をエクスポートする
+          </button>
+        </div>
       </div>
 
   )
