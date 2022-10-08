@@ -1,10 +1,22 @@
 .App {
+  max-width: 860px;
+  /* border: solid 1px; */
+  margin: 0 auto;
+}
+
+.header {
+  border-bottom: solid 1px var(--border-color);
+  text-align: center;
 }
 
 .imageContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.designContainer {
+  border: solid 1px;
 }
 
 .btnlist {

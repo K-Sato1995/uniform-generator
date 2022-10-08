@@ -34,101 +34,107 @@ function App () {
 
   return (
       <div className={styles.App}>
-        <h2>名前の調整</h2>
-        <div className={styles.btnlist}>
-            <button className={styles.keyup} onClick={() => {
-              const newState = { ...uniformDesign }
-              newState.nameDesign.top -= 10
-              setUniformDesign(newState)
-            }}>
-              ↑
-            </button>
+        <div className={styles.header}>
+          <h1>ユニフォームジェネレータ</h1>
+        </div>
 
-            <button
-               className={styles.keyleft}
-               onClick={() => {
-                 const newState = { ...uniformDesign }
-                 newState.nameDesign.right += 10
-                 setUniformDesign(newState)
-               }}>
-              ←
-            </button>
-            <button className={styles.keydown} onClick={() => {
-              const newState = { ...uniformDesign }
-              newState.nameDesign.top += 10
-              setUniformDesign(newState)
-            }}>
-              ↓
-            </button>
-
-            <button className={styles.keyright}
-              onClick={() => {
-                const newState = { ...uniformDesign }
-                newState.nameDesign.right -= 10
-                setUniformDesign(newState)
-              }}>
-              →
-            </button>
-          </div>
-
-          <input type='number' value={uniformDesign.nameDesign.fontSize} onChange={(e) => {
-            const newState = { ...uniformDesign }
-            newState.nameDesign.fontSize = e.target.value
-            setUniformDesign(newState)
-          }}/>
-
-          <h2>背番号の調整</h2>
-
+        <div className={styles.designContainer}>
+          <h2>名前の調整</h2>
           <div className={styles.btnlist}>
-            <button className={styles.keyup} onClick={() => {
-              const newState = { ...uniformDesign }
-              newState.numberDesign.top -= 10
-              setUniformDesign(newState)
-            }}>
-              ↑
-            </button>
-
-            <button
-               className={styles.keyleft}
-               onClick={() => {
-                 const newState = { ...uniformDesign }
-                 newState.numberDesign.right += 10
-                 setUniformDesign(newState)
-               }}>
-              ←
-            </button>
-            <button className={styles.keydown} onClick={() => {
-              const newState = { ...uniformDesign }
-              newState.numberDesign.top += 10
-              setUniformDesign(newState)
-            }}>
-              ↓
-            </button>
-
-            <button className={styles.keyright}
-              onClick={() => {
+              <button className={styles.keyup} onClick={() => {
                 const newState = { ...uniformDesign }
-                newState.numberDesign.right -= 10
+                newState.nameDesign.top -= 10
                 setUniformDesign(newState)
               }}>
-              →
-            </button>
-          </div>
-          <input type='number' value={uniformDesign.numberDesign.fontSize} onChange={(e) => {
-            const newState = { ...uniformDesign }
-            newState.numberDesign.fontSize = e.target.value
-            setUniformDesign(newState)
-          }}/>
+                ↑
+              </button>
 
-          <SketchPicker
-            color={ uniformDesign.fontColor }
-            onChangeComplete={(color) => {
-              setUniformDesign({
-                ...uniformDesign,
-                fontColor: color.hex
-              })
-            }}
-          />
+              <button
+                className={styles.keyleft}
+                onClick={() => {
+                  const newState = { ...uniformDesign }
+                  newState.nameDesign.right += 10
+                  setUniformDesign(newState)
+                }}>
+                ←
+              </button>
+              <button className={styles.keydown} onClick={() => {
+                const newState = { ...uniformDesign }
+                newState.nameDesign.top += 10
+                setUniformDesign(newState)
+              }}>
+                ↓
+              </button>
+
+              <button className={styles.keyright}
+                onClick={() => {
+                  const newState = { ...uniformDesign }
+                  newState.nameDesign.right -= 10
+                  setUniformDesign(newState)
+                }}>
+                →
+              </button>
+            </div>
+
+            <input type='number' value={uniformDesign.nameDesign.fontSize} onChange={(e) => {
+              const newState = { ...uniformDesign }
+              newState.nameDesign.fontSize = e.target.value
+              setUniformDesign(newState)
+            }}/>
+
+            <h2>背番号の調整</h2>
+
+            <div className={styles.btnlist}>
+              <button className={styles.keyup} onClick={() => {
+                const newState = { ...uniformDesign }
+                newState.numberDesign.top -= 10
+                setUniformDesign(newState)
+              }}>
+                ↑
+              </button>
+
+              <button
+                className={styles.keyleft}
+                onClick={() => {
+                  const newState = { ...uniformDesign }
+                  newState.numberDesign.right += 10
+                  setUniformDesign(newState)
+                }}>
+                ←
+              </button>
+              <button className={styles.keydown} onClick={() => {
+                const newState = { ...uniformDesign }
+                newState.numberDesign.top += 10
+                setUniformDesign(newState)
+              }}>
+                ↓
+              </button>
+
+              <button className={styles.keyright}
+                onClick={() => {
+                  const newState = { ...uniformDesign }
+                  newState.numberDesign.right -= 10
+                  setUniformDesign(newState)
+                }}>
+                →
+              </button>
+            </div>
+            <input type='number' value={uniformDesign.numberDesign.fontSize} onChange={(e) => {
+              const newState = { ...uniformDesign }
+              newState.numberDesign.fontSize = e.target.value
+              setUniformDesign(newState)
+            }}/>
+
+            <SketchPicker
+              color={ uniformDesign.fontColor }
+              onChangeComplete={(color) => {
+                setUniformDesign({
+                  ...uniformDesign,
+                  fontColor: color.hex
+                })
+              }}
+            />
+          </div>
           <CSVDropzone onDrop={setPlayerDataList} />
 
           <button onClick={() => {
