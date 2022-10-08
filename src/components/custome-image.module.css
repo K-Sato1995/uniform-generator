@@ -24,10 +24,12 @@
   position: absolute;
   z-index: 100;
   font-size: 23px;
+  font-weight: bold;
 }
 
 .playerNumber {
   position: absolute;
   z-index: 100;
   font-size: 23px;
+  font-weight: bold;
 }
