@@ -13,13 +13,15 @@ function App () {
   const refs = useRef([])
 
   const [uniformDesign, setUniformDesign] = useState({
-    namePosition: {
+    nameDesign: {
       top: 0,
-      right: 0
+      right: 0,
+      fontSize: 16
     },
-    numberPosition: {
+    numberDesign: {
       top: 0,
-      right: 0
+      right: 0,
+      fontSize: 16
     },
     fontColor: '#000000'
   })
@@ -36,7 +38,7 @@ function App () {
         <div className={styles.btnlist}>
             <button className={styles.keyup} onClick={() => {
               const newState = { ...uniformDesign }
-              newState.namePosition.top -= 10
+              newState.nameDesign.top -= 10
               setUniformDesign(newState)
             }}>
               ↑
@@ -46,14 +48,14 @@ function App () {
                className={styles.keyleft}
                onClick={() => {
                  const newState = { ...uniformDesign }
-                 newState.namePosition.right += 10
+                 newState.nameDesign.right += 10
                  setUniformDesign(newState)
                }}>
               ←
             </button>
             <button className={styles.keydown} onClick={() => {
               const newState = { ...uniformDesign }
-              newState.namePosition.top += 10
+              newState.nameDesign.top += 10
               setUniformDesign(newState)
             }}>
               ↓
@@ -62,19 +64,25 @@ function App () {
             <button className={styles.keyright}
               onClick={() => {
                 const newState = { ...uniformDesign }
-                newState.namePosition.right -= 10
+                newState.nameDesign.right -= 10
                 setUniformDesign(newState)
               }}>
               →
             </button>
           </div>
+
+          <input type='number' value={uniformDesign.nameDesign.fontSize} onChange={(e) => {
+            const newState = { ...uniformDesign }
+            newState.nameDesign.fontSize = e.target.value
+            setUniformDesign(newState)
+          }}/>
 
           <h2>背番号の調整</h2>
 
           <div className={styles.btnlist}>
             <button className={styles.keyup} onClick={() => {
               const newState = { ...uniformDesign }
-              newState.numberPosition.top -= 10
+              newState.numberDesign.top -= 10
               setUniformDesign(newState)
             }}>
               ↑
@@ -84,14 +92,14 @@ function App () {
                className={styles.keyleft}
                onClick={() => {
                  const newState = { ...uniformDesign }
-                 newState.numberPosition.right += 10
+                 newState.numberDesign.right += 10
                  setUniformDesign(newState)
                }}>
               ←
             </button>
             <button className={styles.keydown} onClick={() => {
               const newState = { ...uniformDesign }
-              newState.numberPosition.top += 10
+              newState.numberDesign.top += 10
               setUniformDesign(newState)
             }}>
               ↓
@@ -100,12 +108,17 @@ function App () {
             <button className={styles.keyright}
               onClick={() => {
                 const newState = { ...uniformDesign }
-                newState.numberPosition.right -= 10
+                newState.numberDesign.right -= 10
                 setUniformDesign(newState)
               }}>
               →
             </button>
           </div>
+          <input type='number' value={uniformDesign.numberDesign.fontSize} onChange={(e) => {
+            const newState = { ...uniformDesign }
+            newState.numberDesign.fontSize = e.target.value
+            setUniformDesign(newState)
+          }}/>
 
           <CSVDropzone onDrop={setPlayerDataList} />
 
