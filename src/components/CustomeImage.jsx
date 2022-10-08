@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from './custome-image.css'
+import styles from './custome-image.module.css'
 
 const CustomeImage = React.forwardRef((props, ref) => {
   const { file } = props
@@ -11,7 +11,7 @@ const CustomeImage = React.forwardRef((props, ref) => {
   return (
     <div className={styles.container}>
       <div>{playerInfo.name}</div>
-      <button className="custome_image_container__btn" onClick={() => { setPlayerInfo('test') }}>Click</button>
+      <button className={styles.container__btn} onClick={() => { setPlayerInfo('test') }}>Click</button>
       <img src={file} ref={ref} alt="player" />
     </div>
   )

@@ -1,0 +1,7 @@
+.container {
+  border: solid 1px;
+}
+
+.container__btn {
+  border: solid 2px;
+}
