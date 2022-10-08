@@ -1,8 +1,8 @@
 .container {
   border: solid 1px;
-  height: 500px;
-  width: 500px;
-
+  position: relative;
+  height: 250px;
+  width: 250px;
 }
 
 .container__btn {
@@ -10,6 +10,22 @@
 }
 
 .playerImage {
-  height: 500px;
-  width: 500px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playerName {
+  position: absolute;
+  z-index: 100;
+  font-size: 23px;
+}
+
+.playerNumber {
+  position: absolute;
+  z-index: 100;
+  font-size: 23px;
 }

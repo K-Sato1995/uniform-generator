@@ -1,7 +1,39 @@
 .App {
-  text-align: center;
 }
 
 .imageContainer {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btnlist {
+  display: inline-grid;
+  grid-column-gap: 0;
+  align-self: end;
+  border: solid 1px;
+}
+
+.btnlist > button {
+  border: solid 1px;
+  background-color: #fff;
+  color: #000;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.keyup{
+  grid-column-start: 2;
+}
+
+.keyright{
+  grid-column-start: 3;
+}
+
+.keyleft{
+  grid-column-start: 1;
 }
