@@ -163,7 +163,7 @@ function App () {
             </div>
           </div>}
 
-        <div className={styles.exportImagesContainer}>
+          {!!playerDataList.length && <div className={styles.exportImagesContainer}>
           <h2>画像プレビュー</h2>
           <div className={styles.imageContainer}>
             {playerDataList.map((playerData, index) => {
@@ -190,7 +190,7 @@ function App () {
             }}>
               画像達をエクスポートする
             </button>
-         </div>
+         </div>}
       </div>
 
   )
