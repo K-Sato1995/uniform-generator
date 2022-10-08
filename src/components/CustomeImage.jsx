@@ -1,19 +1,16 @@
 import React from 'react'
 import styles from './custome-image.module.css'
-// import { exportComponentAsJPEG, exportComponentAsPNG } from 'react-component-export-image'
+
+const PLAYER_NAME_INDEX = 0
+const PLAYER_NUMBER_INDEX = 1
 
 const CustomeImage = React.forwardRef((props, ref) => {
-  const { file, name } = props
-  // const [playerInfo, setPlayerInfo] = useState({
-  //   name: 'sss',
-  //   uniformNumber: 0
-  // })
-
+  const { file, playerData } = props
   return (
     <div className={styles.container} ref={ref}>
-      <div>{name}</div>
-      {/* <button className={styles.container__btn} onClick={() => { setPlayerInfo('test') }}>Click</button> */}
-      <img src={file} alt="player" />
+      <div>{playerData[PLAYER_NAME_INDEX]}</div>
+      <div>{playerData[PLAYER_NUMBER_INDEX]}</div>
+      <img src={file} alt="player" className={styles.playerImage}/>
     </div>
   )
 })

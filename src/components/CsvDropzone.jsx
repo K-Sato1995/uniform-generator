@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 // import Dropzone from 'react-dropzone'
 // import csv from 'csvtojson'
 import Papa from 'papaparse'
 
-export default class CSVDropzone extends Component {
-  state = {
-    files: []
-  }
+const CSVDropzone = (props) => {
+  const { onDrop } = props
+  //   const [files, setFiles] = useState([])
 
-  render () {
-    return (
+  return (
         <div className="dropzone">
           {/* <Dropzone
             onDrop={this.onDrop.bind(this)}
@@ -28,6 +26,7 @@ export default class CSVDropzone extends Component {
             Papa.parse(files[0], {
               complete: function (results) {
                 console.log('Finished:', results.data)
+                onDrop(results.data)
               }
             }
             )
@@ -35,6 +34,7 @@ export default class CSVDropzone extends Component {
         }}
       />
         </div>
-    )
-  }
+  )
 }
+
+export default CSVDropzone

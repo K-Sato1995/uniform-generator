@@ -1,50 +1,51 @@
 import React, { useState, useRef } from 'react'
 import CustomeImage from './components/CustomeImage'
 import CSVDropzone from './components/CsvDropzone'
-import { exportComponentAsJPEG, exportComponentAsPNG } from 'react-component-export-image'
-import './App.css'
+import { exportComponentAsPNG } from 'react-component-export-image'
+import styles from './App.module.css'
 
 function App () {
-  const componentRef = useRef()
   const [file, setFile] = useState(null)
 
-  const arr = [1, 2, 3]
+  // playerData: [playerName, uniformNumber][]
+  const [playerDataList, setPlayerDataList] = useState([])
+
   const refs = useRef([])
 
-  const handleChange = (e) => {
+  const handleUploadImage = (e) => {
     console.log(e.target.files)
     setFile(URL.createObjectURL(e.target.files[0]))
   }
 
   return (
-      <div className="App">
-          <CSVDropzone onDrop={(result) => {
-            console.log('in main', result)
-          }} />
+      <div className={styles.App}>
+          <CSVDropzone onDrop={setPlayerDataList} />
 
-          <button onClick={() => exportComponentAsJPEG(componentRef)}>JPEGでエクスポート</button>
           <button onClick={() => {
             refs.current.map((ref) =>
               exportComponentAsPNG({ current: ref })
             )
-          }}>PNGでエクスポート</button>
+          }}>画像達をエクスポートする</button>
 
-          <h2>Add Image:</h2>
-          <input type="file" onChange={handleChange} />
+          <h2>生成された画像達</h2>
 
-          {arr.map((item, index) => {
-            return (
-              <CustomeImage
-                key={index}
-                file={file}
-                name={item}
-                ref={(element) => {
-                  console.log(element)
-                  refs.current[index] = element
-                }}
-              />
-            )
-          })}
+          <input type="file" onChange={handleUploadImage} />
+
+          <div className={styles.imageContainer}>
+            {playerDataList.map((playerData, index) => {
+              return (
+                <CustomeImage
+                  key={index}
+                  file={file}
+                  playerData={playerData}
+                  ref={(element) => {
+                    console.log(element)
+                    refs.current[index] = element
+                  }}
+                />
+              )
+            })}
+          </div>
       </div>
 
   )

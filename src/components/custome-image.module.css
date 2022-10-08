@@ -1,7 +1,15 @@
 .container {
   border: solid 1px;
+  height: 500px;
+  width: 500px;
+
 }
 
 .container__btn {
   border: solid 2px;
+}
+
+.playerImage {
+  height: 500px;
+  width: 500px;
 }
