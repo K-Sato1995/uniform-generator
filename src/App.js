@@ -135,17 +135,30 @@ function App () {
               }}
             />
           </div>
-          <CSVDropzone onDrop={setPlayerDataList} />
 
-          <button onClick={() => {
-            refs.current.map((ref) =>
-              exportComponentAsPNG({ current: ref })
-            )
-          }}>画像達をエクスポートする</button>
+          <div className={styles.csvUploadContainer}>
+              <h3>(1) まずは選手データを持つCSVをアップロード</h3>
+             <CSVDropzone onDrop={setPlayerDataList} />
+          </div>
+
+          <div className={styles.csvUploadContainer}>
+              <h3>(2) 次にユニフォームの画像をアップロード</h3>
+              <input type="file" className={styles.imageUploader} onChange={handleUploadImage} />
+          </div>
+
+          <div className={styles.exportImagesContainer}>
+
+          <h3>作成した画像を取得する</h3>
+            <button onClick={() => {
+              refs.current.map((ref) =>
+                exportComponentAsPNG({ current: ref })
+              )
+            }}>
+              画像達をエクスポートする
+            </button>
+          </div>
 
           <h2>画像プレビュー</h2>
-
-          <input type="file" onChange={handleUploadImage} />
 
           <div className={styles.imageContainer}>
             {playerDataList.map((playerData, index) => {

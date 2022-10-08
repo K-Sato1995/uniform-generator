@@ -1,21 +1,13 @@
 import React from 'react'
-// import Dropzone from 'react-dropzone'
-// import csv from 'csvtojson'
 import Papa from 'papaparse'
+import styles from './csv-dropzone.module.css'
 
 const CSVDropzone = (props) => {
   const { onDrop } = props
-  //   const [files, setFiles] = useState([])
 
   return (
-        <div className="dropzone">
-          {/* <Dropzone
-            onDrop={this.onDrop.bind(this)}
-            multiple={false}
-          >
-            <p>Try dropping some files here, or click to select files to upload.</p>
-          </Dropzone> */}
-       <input
+    <input
+        className={styles.dropbtn}
         type="file"
         accept=".csv,.xlsx,.xls"
         onChange={(e) => {
@@ -32,8 +24,7 @@ const CSVDropzone = (props) => {
             )
           }
         }}
-      />
-        </div>
+    />
   )
 }
 
